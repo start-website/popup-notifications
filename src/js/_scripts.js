@@ -1529,20 +1529,6 @@ var startPopupNotification7 = new StartPopupNotifications({
     },
     conditions: {
         click: '#popup7',
-        anchor: '#anchor',
-        countDisplay: '—', // — (бесконечно)
-        secondsShow: '',
-        showSpecificPage: '',//http://localhost:3000/2.html
-        showBeforeClosing: false,
-        showDays: '0,1,2,3,4,5,6', //0,1,2,3,4,5,6
-        startShowHours: '13', // 12, 11, 4
-        endShowHours: '24', // 12, 3, 4, не включительно
-        startDate: '2020-12-08',//2020-12-07 (не работает в IE)
-        endDate: '2021-12-10', //2021-12-07  (не работает в IE), не включительно
-        showProcentLoad: '',
-        pageViewCount: '3',
-        reScreening: '', // 3
-        showOnlyMobile: false
     }
 });
 
@@ -1582,20 +1568,6 @@ var startPopupNotification8 = new StartPopupNotifications({
     },
     conditions: {
         click: '#popup8',
-        anchor: '#anchor',
-        countDisplay: '—', // — (бесконечно)
-        secondsShow: '',
-        showSpecificPage: '',//http://localhost:3000/2.html
-        showBeforeClosing: false,
-        showDays: '0,1,2,3,4,5,6', //0,1,2,3,4,5,6
-        startShowHours: '13', // 12, 11, 4
-        endShowHours: '24', // 12, 3, 4, не включительно
-        startDate: '2020-12-08',//2020-12-07 (не работает в IE)
-        endDate: '2021-12-10', //2021-12-07  (не работает в IE), не включительно
-        showProcentLoad: '',
-        pageViewCount: '3',
-        reScreening: '', // 3
-        showOnlyMobile: false
     }
 });
 
@@ -1746,12 +1718,12 @@ var startPopupNotification12 = new StartPopupNotifications({
         textarea: {
             name: 'Message',
             required: true,
-            show: true
+            show: false
         },
         time: {
             name: 'Time',
             required: true,
-            show: true
+            show: false
         },
         response: 'Thank You! We will contact you shortly.'
     },
@@ -1759,7 +1731,7 @@ var startPopupNotification12 = new StartPopupNotifications({
     shareSocial: '</script><div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="4" data-services="vkontakte,facebook,odnoklassniki,messenger,telegram,twitter,viber,whatsapp"></div>',
     html: 'sss',
     width: '450',
-    height: '860', // image, video, action-media-left, action-media-right, action-media-top, action-text, action-text-2, form-bottom, form-right, form-left, html
+    height: '660', // image, video, action-media-left, action-media-right, action-media-top, action-text, action-text-2, form-bottom, form-right, form-left, html
     offsetRight: '30',
     timer: '',//2021-12-04 23:55
     colorTheme: {

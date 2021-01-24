@@ -10,6 +10,7 @@ class StartPopupNotifications {
             showDate: true,
             dayReScreening: true,
             showOnDesktop: true,
+            showOnMobile: true,
             showMore: true,
             showThisPage: true,
             pageViewCount: true,
@@ -1014,11 +1015,13 @@ class StartPopupNotifications {
             }
 
             if (this.conditions.showBeforeClosing) {
-                let showDone = false;
+                let showDone;
+                let STset = sessionStorage.getItem(`showBeforeClosingPopupIndexOf${this.popupId}`);
                 window.addEventListener('mouseout', (e) => {
-                    if (e.pageY <= 10 && !showDone) {
+                    if (e.pageY <= 10 && !showDone && !STset) {
                         showPopup();
                         showDone = true;
+                        sessionStorage.setItem(`showBeforeClosingPopupIndexOf${this.popupId}`, true);
                     }
                 })
 

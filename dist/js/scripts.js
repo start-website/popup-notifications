@@ -2006,6 +2006,7 @@ var StartPopupNotifications = /*#__PURE__*/function () {
       showDate: true,
       dayReScreening: true,
       showOnDesktop: true,
+      showOnMobile: true,
       showMore: true,
       showThisPage: true,
       pageViewCount: true
@@ -3001,11 +3002,14 @@ var StartPopupNotifications = /*#__PURE__*/function () {
         }
 
         if (this.conditions.showBeforeClosing) {
-          var _showDone = false;
+          var _showDone;
+
+          var STset = sessionStorage.getItem("showBeforeClosingPopupIndexOf".concat(this.popupId));
           window.addEventListener('mouseout', function (e) {
-            if (e.pageY <= 10 && !_showDone) {
+            if (e.pageY <= 10 && !_showDone && !STset) {
               showPopup();
               _showDone = true;
+              sessionStorage.setItem("showBeforeClosingPopupIndexOf".concat(_this3.popupId), true);
             }
           });
         }

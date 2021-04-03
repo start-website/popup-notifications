@@ -35,13 +35,13 @@ var app = new Vue({
                 text: '',
                 about_action: '',
                 text_close: '',
-
+  
                 html: '',
                 timer_date: '',
                 timer_time: '',
-
+  
                 image_path_file: '',
-
+  
                 video_iframe: '',
                 button_text_1: '',
                 button_link_1: '',
@@ -53,35 +53,35 @@ var app = new Vue({
                 od_id_group: '',
                 facebook_src: '',
                 share_social: '',
-
+  
                 settings_form_name_show: 'true',
                 settings_form_tel_show: 'false',
                 settings_form_email_show: 'true',
                 settings_form_textarea_show: 'false',
                 settings_form_time_show: 'false',
-
+  
                 settings_form_name_required: 'false',
                 settings_form_tel_required: 'false',
                 settings_form_email_required: 'true',
                 settings_form_textarea_required: 'false',
                 settings_form_time_required: 'false',
-
+  
                 settings_form_response: 'Thank You! We will contact you shortly.',
                 privacy_link: '',
-
+  
                 basic_color: '',
                 add_color: '',
                 accent_color: '',
                 popup_background_color: '',
                 popup_background_opacity: '',
                 modal_background_color: '',
-
+  
                 modal_background_image_file: '',
-
+  
                 form_filed_text_color: '',
                 form_filed_background_color: '',
                 border_color: '',
-
+  
                 click: '',
                 anchor: '',
                 count_display: '',
@@ -98,6 +98,96 @@ var app = new Vue({
                 re_screening: '',
                 conditions_show_only_mobile: 'false',
                 show_again_popup: '',
+            })
+        },
+        copyBlock() {
+            this.count_settings_block++;
+            this.popup_id++;
+            this.group_settings.push({
+                main_settings_block: false,
+                text_content_block: false,
+                media_content_block: false,
+                buttons_block: false,
+                socialnetworks_block: false,
+                form_block: false,
+                color_scheme: false,
+                display_conditions: false,
+                popup_id: this.popup_id,
+                type: document.querySelector(`#block_1_type`).value,
+                position: document.querySelector(`#block_1_position`).value,
+                animation: document.querySelector(`#block_1_animation`).value,
+                remove_padding: document.querySelector(`#block_1_remove_padding`).value,
+                round_corners: document.querySelector(`#block_1_round_corners`).value,
+                width: document.querySelector(`#block_1_width`).value,
+                height: document.querySelector(`#block_1_height`).value,
+                offset_right: document.querySelector(`#block_1_offset_right`).value,
+                title: document.querySelector(`#block_1_title`).value,
+                text: document.querySelector(`#block_1_text`).value,
+                about_action: document.querySelector(`#block_1_about_action`).value,
+                text_close: document.querySelector(`#block_1_text_close`).value,
+  
+                html: document.querySelector(`#block_1_html`).value,
+                timer_date: document.querySelector(`#block_1_timer_date`).value,
+                timer_time: document.querySelector(`#block_1_timer_time`).value,
+  
+                image_path_file: document.querySelector(`#block_1_image_path_file`).value,
+  
+                video_iframe: document.querySelector(`#block_1_video_iframe`).value,
+                button_text_1: document.querySelector(`#block_1_button_text_1`).value,
+                button_link_1: document.querySelector(`#block_1_button_link_1`).value,
+                button_class_1: document.querySelector(`#block_1_button_class_1`).value,
+                button_text_2: document.querySelector(`#block_1_button_text_2`).value,
+                button_link_2: document.querySelector(`#block_1_button_link_2`).value,
+                button_class_2: document.querySelector(`#block_1_button_class_2`).value,
+                vk_id_group: document.querySelector(`#block_1_vk_id_group`).value,
+                od_id_group: document.querySelector(`#block_1_od_id_group`).value,
+                facebook_src: document.querySelector(`#block_1_facebook_src`).value,
+                share_social: document.querySelector(`#block_1_share_social`).value,
+  
+                settings_form_name_show: document.querySelector(`#block_1_settings_form_name_show`).value,
+                settings_form_tel_show: document.querySelector(`#block_1_settings_form_tel_show`).value,
+                settings_form_email_show: document.querySelector(`#block_1_settings_form_email_show`).value,
+                settings_form_textarea_show: document.querySelector(`#block_1_settings_form_textarea_show`).value,
+                settings_form_time_show: document.querySelector(`#block_1_settings_form_time_show`).value,
+  
+                settings_form_name_required: document.querySelector(`#block_1_settings_form_name_required`).value,
+                settings_form_tel_required: document.querySelector(`#block_1_settings_form_tel_required`).value,
+                settings_form_email_required: document.querySelector(`#block_1_settings_form_email_required`).value,
+                settings_form_textarea_required: document.querySelector(`#block_1_settings_form_textarea_required`).value,
+                settings_form_time_required: document.querySelector(`#block_1_settings_form_time_required`).value,
+  
+                settings_form_response: document.querySelector(`#block_1_settings_form_response`).value,
+                privacy_link: document.querySelector(`#block_1_privacy_link`).value,
+  
+                basic_color: document.querySelector(`#block_1_basic_color`).value,
+                add_color: document.querySelector(`#block_1_add_color`).value,
+                accent_color: document.querySelector(`#block_1_accent_color`).value,
+                popup_background_color: document.querySelector(`#block_1_popup_background_color`).value,
+                popup_background_opacity: document.querySelector(`#block_1_popup_background_opacity`).value,
+                modal_background_color: document.querySelector(`#block_1_modal_background_color`).value,
+  
+                modal_background_image_file: document.querySelector(`#block_1_modal_background_image_file`).value,
+  
+                form_filed_text_color: document.querySelector(`#block_1_form_filed_text_color`).value,
+                form_filed_background_color: document.querySelector(`#block_1_form_filed_background_color`).value,
+                border_color: document.querySelector(`#block_1_border_color`).value,
+  
+                click: document.querySelector(`#block_1_click`).value,
+                anchor: document.querySelector(`#block_1_anchor`).value,
+                count_display: document.querySelector(`#block_1_count_display`).value,
+                seconds_show: document.querySelector(`#block_1_seconds_show`).value,
+                show_specific_page: document.querySelector(`#block_1_show_specific_page`).value,
+                conditions_show_before_closing: document.querySelector(`#block_1_conditions_show_before_closing`).value,
+                show_date_start: document.querySelector(`#block_1_show_date_start`).value,
+                show_date_end: document.querySelector(`#block_1_show_date_end`).value,
+                show_days: document.querySelector(`#block_1_show_days`).value,
+                show_hours_start: document.querySelector(`#block_1_show_hours_start`).value,
+                show_hours_end: document.querySelector(`#block_1_show_hours_end`).value,
+                show_procent_load: document.querySelector(`#block_1_show_procent_load`).value,
+                page_view_count: document.querySelector(`#block_1_page_view_count`).value,
+                re_screening: document.querySelector(`#block_1_re_screening`).value,
+                conditions_show_only_mobile: document.querySelector(`#block_1_conditions_show_only_mobile`).value,
+                show_again_popup: document.querySelector(`#block_1_show_again_popup`).value,
             })
         },
         delBlock() {
@@ -132,7 +222,7 @@ var app = new Vue({
         delImagePath(e, block_number, block_index) {
             const inputFile = document.querySelector(`#block_${block_number}_input_file`);
             const inputText = document.querySelector(`#block_${block_number}_input_text`);
-
+  
             const inputFileDefault = inputFile.name;
             const inputTextDefault = inputText.name;
             
@@ -151,7 +241,7 @@ var app = new Vue({
         delModalImage(e, block_number, block_index) {
             const inputFile = document.querySelector(`#block_${block_number}_modal_background_image_input_file`);
             const inputText = document.querySelector(`#block_${block_number}_modal_background_image_input_text`);
-
+  
             const inputFileDefault = inputFile.name;
             const inputTextDefault = inputText.name;
             
@@ -187,7 +277,7 @@ var app = new Vue({
             const inputBlockChilds = input.parentElement.parentElement.children;
             const buttonSubmit = document.querySelector('.buttom-sumbit');
             const hexRegexp = /^#([\da-f]{3}){1,2}$/i;
-
+  
             let hintError;
     
             for (let i = 0; i < inputBlockChilds.length; i++) {
@@ -197,7 +287,7 @@ var app = new Vue({
                     hintError = elem;
                 }
             }
-
+  
             if (!hexRegexp.test(e.target.value) && e.target.value != '') {
                 hintError.style.display = 'block';
                 buttonSubmit.disabled = true;
@@ -225,7 +315,7 @@ var app = new Vue({
         },
         setValueInInputHidden(e) {
             let inputHidden = e.target.parentElement.children[0];
-
+  
             if (e.target.checked === true) {
                 inputHidden.value = true;
             } else {
@@ -259,13 +349,13 @@ var app = new Vue({
                 text: document.querySelector(`#block_${numberBlock}_text`).value,
                 about_action: document.querySelector(`#block_${numberBlock}_about_action`).value,
                 text_close: document.querySelector(`#block_${numberBlock}_text_close`).value,
-
+  
                 html: document.querySelector(`#block_${numberBlock}_html`).value,
                 timer_date: document.querySelector(`#block_${numberBlock}_timer_date`).value,
                 timer_time: document.querySelector(`#block_${numberBlock}_timer_time`).value,
-
+  
                 image_path_file: document.querySelector(`#block_${numberBlock}_image_path_file`).value,
-
+  
                 video_iframe: document.querySelector(`#block_${numberBlock}_video_iframe`).value,
                 button_text_1: document.querySelector(`#block_${numberBlock}_button_text_1`).value,
                 button_link_1: document.querySelector(`#block_${numberBlock}_button_link_1`).value,
@@ -277,35 +367,35 @@ var app = new Vue({
                 od_id_group: document.querySelector(`#block_${numberBlock}_od_id_group`).value,
                 facebook_src: document.querySelector(`#block_${numberBlock}_facebook_src`).value,
                 share_social: document.querySelector(`#block_${numberBlock}_share_social`).value,
-
+  
                 settings_form_name_show: document.querySelector(`#block_${numberBlock}_settings_form_name_show`).value,
                 settings_form_tel_show: document.querySelector(`#block_${numberBlock}_settings_form_tel_show`).value,
                 settings_form_email_show: document.querySelector(`#block_${numberBlock}_settings_form_email_show`).value,
                 settings_form_textarea_show: document.querySelector(`#block_${numberBlock}_settings_form_textarea_show`).value,
                 settings_form_time_show: document.querySelector(`#block_${numberBlock}_settings_form_time_show`).value,
-
+  
                 settings_form_name_required: document.querySelector(`#block_${numberBlock}_settings_form_name_required`).value,
                 settings_form_tel_required: document.querySelector(`#block_${numberBlock}_settings_form_tel_required`).value,
                 settings_form_email_required: document.querySelector(`#block_${numberBlock}_settings_form_email_required`).value,
                 settings_form_textarea_required: document.querySelector(`#block_${numberBlock}_settings_form_textarea_required`).value,
                 settings_form_time_required: document.querySelector(`#block_${numberBlock}_settings_form_time_required`).value,
-
+  
                 settings_form_response: document.querySelector(`#block_${numberBlock}_settings_form_response`).value,
                 privacy_link: document.querySelector(`#block_${numberBlock}_privacy_link`).value,
-
+  
                 basic_color: document.querySelector(`#block_${numberBlock}_basic_color`).value,
                 add_color: document.querySelector(`#block_${numberBlock}_add_color`).value,
                 accent_color: document.querySelector(`#block_${numberBlock}_accent_color`).value,
                 popup_background_color: document.querySelector(`#block_${numberBlock}_popup_background_color`).value,
                 popup_background_opacity: document.querySelector(`#block_${numberBlock}_popup_background_opacity`).value,
                 modal_background_color: document.querySelector(`#block_${numberBlock}_modal_background_color`).value,
-
+  
                 modal_background_image_file: document.querySelector(`#block_${numberBlock}_modal_background_image_file`).value,
-
+  
                 form_filed_text_color: document.querySelector(`#block_${numberBlock}_form_filed_text_color`).value,
                 form_filed_background_color: document.querySelector(`#block_${numberBlock}_form_filed_background_color`).value,
                 border_color: document.querySelector(`#block_${numberBlock}_border_color`).value,
-
+  
                 click: document.querySelector(`#block_${numberBlock}_click`).value,
                 anchor: document.querySelector(`#block_${numberBlock}_anchor`).value,
                 count_display: document.querySelector(`#block_${numberBlock}_count_display`).value,
@@ -325,4 +415,4 @@ var app = new Vue({
             })
         }
     }
-})
+  })

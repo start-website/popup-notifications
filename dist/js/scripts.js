@@ -2792,10 +2792,12 @@ var StartPopupNotifications = /*#__PURE__*/function () {
       tagTimer.className = addClass ? "startwebsite-popup__timer ".concat(addClass) : 'startwebsite-popup__timer';
       tagTimer.innerHTML = distanceEndHtml;
       if (this.colorTheme.addColor) tagTimer.style.color = this.colorTheme.addColor;
-      elem.appendChild(tagTimer);
-      var countDowndate = new Date(this.timer).getTime();
+      elem.appendChild(tagTimer); //let countDowndate = new Date(this.timer).getTime(); 
+
+      var countDowndate = moment(this.timer);
       var countDownFunction = setInterval(function () {
-        var now = new Date().getTime();
+        // let now = new Date().getTime();
+        var now = moment();
         var distance = countDowndate - now;
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));

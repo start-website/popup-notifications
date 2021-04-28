@@ -810,9 +810,11 @@ class StartPopupNotifications {
         if (this.colorTheme.addColor) tagTimer.style.color = this.colorTheme.addColor;
         elem.appendChild(tagTimer);
 
-        let countDowndate = new Date(this.timer).getTime();
+        //let countDowndate = new Date(this.timer).getTime(); 
+        let countDowndate = moment(this.timer);
         let countDownFunction = setInterval(function () {
-            let now = new Date().getTime();
+           // let now = new Date().getTime();
+           let now = moment();
             let distance = countDowndate - now;
             let days = Math.floor(distance / (1000 * 60 * 60 * 24));
             let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));

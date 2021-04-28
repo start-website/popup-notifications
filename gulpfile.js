@@ -30,6 +30,13 @@ gulp.task('move-dist', function (done) {
     .pipe(gulp.dest('./dist'));
 })
 
+gulp.task('move-dist-js', function (done) {
+  return gulp.src([
+    './src/js/moment.min.js',
+  ])
+    .pipe(gulp.dest('./dist/js'));
+})
+
 gulp.task('move-dist-fonts', function (done) {
   return gulp.src([
     './src/fonts/**',
@@ -126,7 +133,7 @@ const webpackConfig = {
 gulp.task('webpack', function() {
   return gulp.src([
     './src/js/_scripts.js',
-    './src/js/_settings.js'
+    './src/js/_settings.js',
   ])
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest(isDev ? './src/js' : './dist/js'));
@@ -188,6 +195,6 @@ gulp.task('watch', function() {
 
 gulp.task('default', gulp.parallel('watch', 'move-dist', 'webpack', 'webp', 'sass', 'browser-sync'));
 
-gulp.task('build', gulp.series('postcss', 'clean', 'sass' ,'postcss', 'move-dist', 'move-dist-fonts', 'move-dist-images', 'tiny', 'webpack', 'webp'));
+gulp.task('build', gulp.series('postcss', 'clean', 'sass' ,'postcss', 'move-dist', 'move-dist-fonts', 'move-dist-images', 'move-dist-js', 'tiny', 'webpack', 'webp'));
 
 

@@ -35,13 +35,13 @@ var app = new Vue({
                 text: '',
                 about_action: '',
                 text_close: '',
-  
+
                 html: '',
                 timer_date: '',
                 timer_time: '',
-  
+
                 image_path_file: '',
-  
+
                 video_iframe: '',
                 button_text_1: '',
                 button_link_1: '',
@@ -53,35 +53,35 @@ var app = new Vue({
                 od_id_group: '',
                 facebook_src: '',
                 share_social: '',
-  
+
                 settings_form_name_show: 'true',
                 settings_form_tel_show: 'false',
                 settings_form_email_show: 'true',
                 settings_form_textarea_show: 'false',
                 settings_form_time_show: 'false',
-  
+
                 settings_form_name_required: 'false',
                 settings_form_tel_required: 'false',
                 settings_form_email_required: 'true',
                 settings_form_textarea_required: 'false',
                 settings_form_time_required: 'false',
-  
+
                 settings_form_response: 'Thank You! We will contact you shortly.',
                 privacy_link: '',
-  
+
                 basic_color: '',
                 add_color: '',
                 accent_color: '',
                 popup_background_color: '',
                 popup_background_opacity: '',
                 modal_background_color: '',
-  
+
                 modal_background_image_file: '',
-  
+
                 form_filed_text_color: '',
                 form_filed_background_color: '',
                 border_color: '',
-  
+
                 click: '',
                 anchor: '',
                 count_display: '',
@@ -125,13 +125,13 @@ var app = new Vue({
                 text: document.querySelector(`#block_1_text`).value,
                 about_action: document.querySelector(`#block_1_about_action`).value,
                 text_close: document.querySelector(`#block_1_text_close`).value,
-  
+
                 html: document.querySelector(`#block_1_html`).value,
                 timer_date: document.querySelector(`#block_1_timer_date`).value,
                 timer_time: document.querySelector(`#block_1_timer_time`).value,
-  
+
                 image_path_file: document.querySelector(`#block_1_image_path_file`).value,
-  
+
                 video_iframe: document.querySelector(`#block_1_video_iframe`).value,
                 button_text_1: document.querySelector(`#block_1_button_text_1`).value,
                 button_link_1: document.querySelector(`#block_1_button_link_1`).value,
@@ -143,35 +143,35 @@ var app = new Vue({
                 od_id_group: document.querySelector(`#block_1_od_id_group`).value,
                 facebook_src: document.querySelector(`#block_1_facebook_src`).value,
                 share_social: document.querySelector(`#block_1_share_social`).value,
-  
+
                 settings_form_name_show: document.querySelector(`#block_1_settings_form_name_show`).value,
                 settings_form_tel_show: document.querySelector(`#block_1_settings_form_tel_show`).value,
                 settings_form_email_show: document.querySelector(`#block_1_settings_form_email_show`).value,
                 settings_form_textarea_show: document.querySelector(`#block_1_settings_form_textarea_show`).value,
                 settings_form_time_show: document.querySelector(`#block_1_settings_form_time_show`).value,
-  
+
                 settings_form_name_required: document.querySelector(`#block_1_settings_form_name_required`).value,
                 settings_form_tel_required: document.querySelector(`#block_1_settings_form_tel_required`).value,
                 settings_form_email_required: document.querySelector(`#block_1_settings_form_email_required`).value,
                 settings_form_textarea_required: document.querySelector(`#block_1_settings_form_textarea_required`).value,
                 settings_form_time_required: document.querySelector(`#block_1_settings_form_time_required`).value,
-  
+
                 settings_form_response: document.querySelector(`#block_1_settings_form_response`).value,
                 privacy_link: document.querySelector(`#block_1_privacy_link`).value,
-  
+
                 basic_color: document.querySelector(`#block_1_basic_color`).value,
                 add_color: document.querySelector(`#block_1_add_color`).value,
                 accent_color: document.querySelector(`#block_1_accent_color`).value,
                 popup_background_color: document.querySelector(`#block_1_popup_background_color`).value,
                 popup_background_opacity: document.querySelector(`#block_1_popup_background_opacity`).value,
                 modal_background_color: document.querySelector(`#block_1_modal_background_color`).value,
-  
+
                 modal_background_image_file: document.querySelector(`#block_1_modal_background_image_file`).value,
-  
+
                 form_filed_text_color: document.querySelector(`#block_1_form_filed_text_color`).value,
                 form_filed_background_color: document.querySelector(`#block_1_form_filed_background_color`).value,
                 border_color: document.querySelector(`#block_1_border_color`).value,
-  
+
                 click: document.querySelector(`#block_1_click`).value,
                 anchor: document.querySelector(`#block_1_anchor`).value,
                 count_display: document.querySelector(`#block_1_count_display`).value,
@@ -202,15 +202,15 @@ var app = new Vue({
             const inputBlockChilds = input.parentElement.parentElement.children;
             let hintError;
             let regex = /(png|jpe?g|gif|svg|webp)$/i;
-    
+
             for (let i = 0; i < inputBlockChilds.length; i++) {
                 const elem = inputBlockChilds[i];
-  
+
                 if (elem.className && elem.className.match(/hint-error/gi)) {
                     hintError = elem;
                 }
             }
-  
+
             if (!regex.test(input.value)) {
                 hintError.style.display = 'block';
                 buttonSubmit.disabled = true;
@@ -222,10 +222,10 @@ var app = new Vue({
         delImagePath(e, block_number, block_index) {
             const inputFile = document.querySelector(`#block_${block_number}_input_file`);
             const inputText = document.querySelector(`#block_${block_number}_input_text`);
-  
+
             const inputFileDefault = inputFile.name;
             const inputTextDefault = inputText.name;
-            
+
             this.group_settings[block_index].image_path_file = false;
             inputFile.name = inputTextDefault;
             inputText.name = inputFileDefault;
@@ -233,7 +233,7 @@ var app = new Vue({
         },
         returnDefaultInputFileName(e, block_number, block_index) {
             e.target.name = `shop_startpopupnotifications[block_settings_${block_number}_image_path_file]`;
-  
+
             const inputText = document.querySelector(`#block_${block_number}_input_text`);
             inputText.name = '';
             inputText.value = '';
@@ -241,10 +241,10 @@ var app = new Vue({
         delModalImage(e, block_number, block_index) {
             const inputFile = document.querySelector(`#block_${block_number}_modal_background_image_input_file`);
             const inputText = document.querySelector(`#block_${block_number}_modal_background_image_input_text`);
-  
+
             const inputFileDefault = inputFile.name;
             const inputTextDefault = inputText.name;
-            
+
             this.group_settings[block_index].modal_background_image_file = false;
             inputFile.name = inputTextDefault;
             inputText.name = inputFileDefault;
@@ -252,18 +252,18 @@ var app = new Vue({
         },
         returnDefaultModalImageInputFileName(e, block_number, block_index) {
             e.target.name = `shop_startpopupnotifications[block_settings_${block_number}_modal_background_image_file]`;
-  
+
             const inputText = document.querySelector(`#block_${block_number}_input_text`);
             inputText.name = '';
             inputText.value = '';
         },
-        delValue(e) {            
+        delValue(e) {
             function findInput(elems) {
                 elems.forEach((elem) => {
                     if (elem.tagName && /input/i.test(elem.tagName)) {
                         const input = elem;
                         input.value = '';
-                        
+
                         return true;
                     } else {
                         findInput(elem.childNodes);
@@ -277,17 +277,17 @@ var app = new Vue({
             const inputBlockChilds = input.parentElement.parentElement.children;
             const buttonSubmit = document.querySelector('.buttom-sumbit');
             const hexRegexp = /^#([\da-f]{3}){1,2}$/i;
-  
+
             let hintError;
-    
+
             for (let i = 0; i < inputBlockChilds.length; i++) {
                 const elem = inputBlockChilds[i];
-  
+
                 if (elem.className && elem.className.match(/hint-error/gi)) {
                     hintError = elem;
                 }
             }
-  
+
             if (!hexRegexp.test(e.target.value) && e.target.value != '') {
                 hintError.style.display = 'block';
                 buttonSubmit.disabled = true;
@@ -315,13 +315,27 @@ var app = new Vue({
         },
         setValueInInputHidden(e) {
             let inputHidden = e.target.parentElement.children[0];
-  
+
             if (e.target.checked === true) {
                 inputHidden.value = true;
             } else {
                 inputHidden.value = false;
             }
         },
+    },
+    watch: {
+        group_settings: {
+            handler(settings_arr){
+                settings_arr.forEach(elem => {
+                    elem.title = elem.title.replace(/(\n|\r|\n\n|\r\n)/m, '');
+                    elem.text = elem.text.replace(/(\n|\r|\n\n|\r\n)/m, '');
+                    elem.text_close = elem.text_close.replace(/(\n|\r|\n\n|\r\n)/m, '');
+                    elem.about_action = elem.about_action.replace(/(\n|\r|\n\n|\r\n)/m, '');
+                    elem.settings_form_response = elem.settings_form_response.replace(/(\n|\r|\n\n|\r\n)/m, '');
+                })
+            },
+            deep: true
+        }
     },
     created: function () {
         let numberBlock = 0;
@@ -349,13 +363,13 @@ var app = new Vue({
                 text: document.querySelector(`#block_${numberBlock}_text`).value,
                 about_action: document.querySelector(`#block_${numberBlock}_about_action`).value,
                 text_close: document.querySelector(`#block_${numberBlock}_text_close`).value,
-  
+
                 html: document.querySelector(`#block_${numberBlock}_html`).value,
                 timer_date: document.querySelector(`#block_${numberBlock}_timer_date`).value,
                 timer_time: document.querySelector(`#block_${numberBlock}_timer_time`).value,
-  
+
                 image_path_file: document.querySelector(`#block_${numberBlock}_image_path_file`).value,
-  
+
                 video_iframe: document.querySelector(`#block_${numberBlock}_video_iframe`).value,
                 button_text_1: document.querySelector(`#block_${numberBlock}_button_text_1`).value,
                 button_link_1: document.querySelector(`#block_${numberBlock}_button_link_1`).value,
@@ -367,35 +381,35 @@ var app = new Vue({
                 od_id_group: document.querySelector(`#block_${numberBlock}_od_id_group`).value,
                 facebook_src: document.querySelector(`#block_${numberBlock}_facebook_src`).value,
                 share_social: document.querySelector(`#block_${numberBlock}_share_social`).value,
-  
+
                 settings_form_name_show: document.querySelector(`#block_${numberBlock}_settings_form_name_show`).value,
                 settings_form_tel_show: document.querySelector(`#block_${numberBlock}_settings_form_tel_show`).value,
                 settings_form_email_show: document.querySelector(`#block_${numberBlock}_settings_form_email_show`).value,
                 settings_form_textarea_show: document.querySelector(`#block_${numberBlock}_settings_form_textarea_show`).value,
                 settings_form_time_show: document.querySelector(`#block_${numberBlock}_settings_form_time_show`).value,
-  
+
                 settings_form_name_required: document.querySelector(`#block_${numberBlock}_settings_form_name_required`).value,
                 settings_form_tel_required: document.querySelector(`#block_${numberBlock}_settings_form_tel_required`).value,
                 settings_form_email_required: document.querySelector(`#block_${numberBlock}_settings_form_email_required`).value,
                 settings_form_textarea_required: document.querySelector(`#block_${numberBlock}_settings_form_textarea_required`).value,
                 settings_form_time_required: document.querySelector(`#block_${numberBlock}_settings_form_time_required`).value,
-  
+
                 settings_form_response: document.querySelector(`#block_${numberBlock}_settings_form_response`).value,
                 privacy_link: document.querySelector(`#block_${numberBlock}_privacy_link`).value,
-  
+
                 basic_color: document.querySelector(`#block_${numberBlock}_basic_color`).value,
                 add_color: document.querySelector(`#block_${numberBlock}_add_color`).value,
                 accent_color: document.querySelector(`#block_${numberBlock}_accent_color`).value,
                 popup_background_color: document.querySelector(`#block_${numberBlock}_popup_background_color`).value,
                 popup_background_opacity: document.querySelector(`#block_${numberBlock}_popup_background_opacity`).value,
                 modal_background_color: document.querySelector(`#block_${numberBlock}_modal_background_color`).value,
-  
+
                 modal_background_image_file: document.querySelector(`#block_${numberBlock}_modal_background_image_file`).value,
-  
+
                 form_filed_text_color: document.querySelector(`#block_${numberBlock}_form_filed_text_color`).value,
                 form_filed_background_color: document.querySelector(`#block_${numberBlock}_form_filed_background_color`).value,
                 border_color: document.querySelector(`#block_${numberBlock}_border_color`).value,
-  
+
                 click: document.querySelector(`#block_${numberBlock}_click`).value,
                 anchor: document.querySelector(`#block_${numberBlock}_anchor`).value,
                 count_display: document.querySelector(`#block_${numberBlock}_count_display`).value,
@@ -415,4 +429,4 @@ var app = new Vue({
             })
         }
     }
-  })
+})

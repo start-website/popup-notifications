@@ -40,6 +40,8 @@ class StartPopupNotifications {
         this.odIdGroup = props.odIdGroup;
         this.settingsForm = props.settingsForm;
         this.privacyPolicyLink = props.privacyPolicyLink;
+        this.privacyPolicyText = props.privacyPolicyText;
+        this.privacyPolicyText2 = props.privacyPolicyText2;
         this.shareSocial = props.shareSocial;
         this.html = props.html;
         this.width = Number(props.width);
@@ -546,7 +548,7 @@ class StartPopupNotifications {
                     let tagInput = document.createElement('input');
                     tagInput.className = 'startwebsite-popup__form_input';
                     tagInput.type = 'text';
-                    tagInput.name = 'name';
+                    tagInput.name = 'sws-name';
                     if (this.settingsForm.name.required) tagInput.required = true;
                     if (this.colorTheme.formFieldBackground) {
                         tagInput.style.backgroundColor = this.colorTheme.formFieldBackground;
@@ -572,7 +574,7 @@ class StartPopupNotifications {
                     let tagInput = document.createElement('input');
                     tagInput.className = 'startwebsite-popup__form_input';
                     tagInput.type = 'tel';
-                    tagInput.name = 'tel';
+                    tagInput.name = 'sws-tel';
                     if (this.settingsForm.tel.required) tagInput.required = true;
                     if (this.colorTheme.formFieldBackground) {
                         tagInput.style.backgroundColor = this.colorTheme.formFieldBackground;
@@ -593,7 +595,7 @@ class StartPopupNotifications {
                     let tagInput = document.createElement('input');
                     tagInput.className = 'startwebsite-popup__form_input';
                     tagInput.type = 'email';
-                    tagInput.name = 'email';
+                    tagInput.name = 'sws-email';
                     if (this.settingsForm.email.required) tagInput.required = true;
                     if (this.colorTheme.formFieldBackground) {
                         tagInput.style.backgroundColor = this.colorTheme.formFieldBackground;
@@ -613,7 +615,7 @@ class StartPopupNotifications {
 
                     let tagInput = document.createElement('select');
                     tagInput.className = 'startwebsite-popup__form_input';
-                    tagInput.name = 'time';
+                    tagInput.name = 'sws-time';
                     tagInput.value = '12:00';
                     if (this.colorTheme.formFieldBackground) {
                         tagInput.style.backgroundColor = this.colorTheme.formFieldBackground;
@@ -650,7 +652,7 @@ class StartPopupNotifications {
 
                     let tagTextarea = document.createElement('textarea');
                     tagTextarea.className = 'startwebsite-popup__form_textarea';
-                    tagTextarea.name = 'message';
+                    tagTextarea.name = 'sws-message';
                     if (this.settingsForm.textarea.required) tagTextarea.required = true;
                     if (this.colorTheme.formFieldBackground) {
                         tagTextarea.style.backgroundColor = this.colorTheme.formFieldBackground;
@@ -671,7 +673,7 @@ class StartPopupNotifications {
                 let tagFormButton = document.createElement('button');
                 tagFormButton.className = this.buttonClass1 ? `startwebsite-popup__form_button ${this.buttonClass1}` : 'startwebsite-popup__form_button';
                 tagFormButton.type = 'submit';
-                tagFormButton.innerText = 'Submit';
+                tagFormButton.innerText = this.buttonText1 ? this.buttonText1 : 'Submit';
                 this._sendAJAXform(tagForm, tagFormButton, tagFormResponse);
                 tagForm.appendChild(tagFormButton);
 
@@ -689,7 +691,7 @@ class StartPopupNotifications {
 
                     let tagPrivacyText = document.createElement('div');
                     tagPrivacyText.className = 'startwebsite-popup__privacy_text';
-                    tagPrivacyText.innerHTML = `I have read and accept the <a class="startwebsite-popup__privacy_link" href="${this.privacyPolicyLink}">Privacy Policy</a>`;
+                    tagPrivacyText.innerHTML = `${this.privacyPolicyText} <a class="startwebsite-popup__privacy_link" href="${this.privacyPolicyLink}">${this.privacyPolicyText2}</a>`;
                     tagPrivacy.appendChild(tagPrivacyText);
                 }
             }
@@ -941,7 +943,7 @@ class StartPopupNotifications {
 
                 if (this.conditions.showOnlyMobile) checkDevice();
                 if (this.conditions.showAgainPopup) checkLocalStorageShowMore();
-   
+
                 const checkValidParams = () => {
                     for (const param in this.validParams) {
                         if (this.validParams[param] === false) {
@@ -984,8 +986,12 @@ class StartPopupNotifications {
             }
 
             if (this.conditions.click) {
-                document.querySelector(this.conditions.click).addEventListener('click', () => {
-                    showPopup();
+                const elems = document.querySelectorAll(this.conditions.click)
+
+                elems.forEach(elem => {
+                    elem.addEventListener('click', function () {
+                        showPopup()
+                    })
                 })
             }
 
@@ -1007,8 +1013,15 @@ class StartPopupNotifications {
             }
 
             if (this.conditions.showSpecificPage) {
-                if (location.href !== this.conditions.showSpecificPage) {
-                    this.validParams.showThisPage = false;
+                const pages = this.conditions.showSpecificPage.split(',')
+
+                for (let i = 0; i < pages.length; i++) {
+                    const page = pages[i].trim()
+                    
+                    if (location.href === page) {
+                        this.validParams.showThisPage = true;
+                        break;
+                    }
                 }
             }
 
@@ -1019,8 +1032,8 @@ class StartPopupNotifications {
             if (this.conditions.showBeforeClosing) {
                 let showDone;
                 let STset = sessionStorage.getItem(`showBeforeClosingPopupIndexOf${this.popupId}`);
-                window.addEventListener('mouseout', (e) => {
-                    if (e.pageY <= 10 && !showDone && !STset) {
+                document.addEventListener('mouseleave', (e) => {
+                    if (e.clientY <= 10 && !showDone && !STset) {
                         showPopup();
                         showDone = true;
                         sessionStorage.setItem(`showBeforeClosingPopupIndexOf${this.popupId}`, true);
@@ -1189,6 +1202,8 @@ var startPopupNotification1 = new StartPopupNotifications({
         response: 'Thank You! We will contact you shortly.'
     },
     privacyPolicyLink: 'http://privacy-policy/',
+    privacyPolicyText: 'I have read and accept the',
+    privacyPolicyText2: 'Privacy Policy',
     shareSocial: '<div class="ya-share2" data-curtain data-shape="round" data-color-scheme="whiteblack" data-services="messenger,vkontakte,facebook,odnoklassniki,telegram,twitter"></div>',
     html: 'sss',
     width: '600',
@@ -1218,7 +1233,7 @@ var startPopupNotification1 = new StartPopupNotifications({
         startShowHours: '13', // 12, 11, 4
         endShowHours: '24', // 12, 3, 4, не включительно
         startDate: '2020-12-08',//2020-12-07 (не работает в IE)
-        endDate: '2021-12-10', //2021-12-07  (не работает в IE), не включительно
+        endDate: '2100-12-10', //2021-12-07  (не работает в IE), не включительно
         showProcentLoad: '',
         pageViewCount: '',
         reScreening: '', // 3
@@ -1324,6 +1339,8 @@ var startPopupNotification3 = new StartPopupNotifications({
         response: 'Thank You! We will contact you shortly.'
     },
     privacyPolicyLink: 'http://privacy-policy/',
+    privacyPolicyText: 'I have read and accept the',
+    privacyPolicyText2: 'Privacy Policy',
     shareSocial: '</script><div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="4" data-services="vkontakte,facebook,odnoklassniki,messenger,telegram,twitter,viber,whatsapp"></div>',
     html: 'sss',
     width: '400',
@@ -1442,6 +1459,8 @@ var startPopupNotification5 = new StartPopupNotifications({
         response: 'Thank You! We will contact you shortly.'
     },
     privacyPolicyLink: 'http://privacy-policy/',
+    privacyPolicyText: 'I have read and accept the',
+    privacyPolicyText2: 'Privacy Policy',
     shareSocial: '</script><div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="4" data-services="vkontakte,facebook,odnoklassniki,messenger,telegram,twitter,viber,whatsapp"></div>',
     html: 'sss',
     width: '600',
@@ -1514,6 +1533,8 @@ var startPopupNotification7 = new StartPopupNotifications({
     odIdGroup: '50582132228315',//
     facebookSrc: 'https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FWorld-of-Web-247563759246491%2F&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1639956936237812', // в url parametre width должно быть 500
     privacyPolicyLink: 'http://privacy-policy/',
+    privacyPolicyText: 'I have read and accept the',
+    privacyPolicyText2: 'Privacy Policy',
     shareSocial: '</script><div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="4" data-services="vkontakte,facebook,odnoklassniki,messenger,telegram,twitter,viber,whatsapp"></div>',
     html: 'sss',
     width: '500',
@@ -1553,6 +1574,8 @@ var startPopupNotification8 = new StartPopupNotifications({
     odIdGroup: '50582132228315',//
     facebookSrc: 'https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FWorld-of-Web-247563759246491%2F&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1639956936237812', // в url parametre width должно быть 500
     privacyPolicyLink: 'http://privacy-policy/',
+    privacyPolicyText: 'I have read and accept the',
+    privacyPolicyText2: 'Privacy Policy',
     shareSocial: '</script><div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="4" data-services="vkontakte,facebook,odnoklassniki,messenger,telegram,twitter,viber,whatsapp"></div>',
     html: 'sss',
     width: '500',
@@ -1733,6 +1756,8 @@ var startPopupNotification12 = new StartPopupNotifications({
         response: 'Thank You! We will contact you shortly.'
     },
     privacyPolicyLink: 'http://privacy-policy/',
+    privacyPolicyText: 'I have read and accept the',
+    privacyPolicyText2: 'Privacy Policy',
     shareSocial: '</script><div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="4" data-services="vkontakte,facebook,odnoklassniki,messenger,telegram,twitter,viber,whatsapp"></div>',
     html: 'sss',
     width: '450',
@@ -1804,6 +1829,8 @@ var startPopupNotification13 = new StartPopupNotifications({
         response: 'Thank You! We will contact you shortly.'
     },
     privacyPolicyLink: 'http://privacy-policy/',
+    privacyPolicyText: 'I have read and accept the',
+    privacyPolicyText2: 'Privacy Policy',
     shareSocial: '<div class="ya-share2" data-curtain data-shape="round" data-color-scheme="whiteblack" data-services="messenger,vkontakte,facebook,odnoklassniki,telegram,twitter"></div>',
     html: 'sss',
     width: '850',
@@ -1873,6 +1900,8 @@ var startPopupNotification14 = new StartPopupNotifications({
         response: 'Thank You! We will contact you shortly.'
     },
     privacyPolicyLink: 'http://privacy-policy/',
+    privacyPolicyText: 'I have read and accept the',
+    privacyPolicyText2: 'Privacy Policy',
     shareSocial: '</script><div class="ya-share2" data-curtain data-size="l" data-shape="round" data-limit="4" data-services="vkontakte,facebook,odnoklassniki,messenger,telegram,twitter,viber,whatsapp"></div>',
     html: 'sss',
     width: '850',
